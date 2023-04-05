@@ -2,7 +2,7 @@ import React from "react";
 import "./featuredMovie.scss";
 export default ({ item }) => {
   let airDate = new Date(item.first_air_date);
-
+  let average = item.vote_average;
   let genres = [];
   for (let i in item.genres) {
     genres.push(item.genres[i].name);
@@ -21,7 +21,7 @@ export default ({ item }) => {
         <div className="featured--horizontal">
           <h1 className="featured-name">{item.original_name}</h1>
           <div className="featured--info">
-            <div className="points">{item.vote_average} pontos</div>
+            <div className="points">{average.toFixed(2)} pontos</div>
             <div className="year">{airDate.getFullYear()}</div>
             <div className="season">
               {item.number_of_seasons} Temporada
@@ -30,7 +30,7 @@ export default ({ item }) => {
           </div>
           <div className="featured-overview">
             {item.overview}
-            {item.overview === "" ? "Sem dados" : "..."}
+            {item.overview === "" ? "Sem sinopse" : ""}
           </div>
           <div className="featured--buttons">
             <a href={`/watch/${item.id}`} className="wacthButton">

@@ -22,7 +22,7 @@ function App() {
       });
 
       let randomChosen = Math.floor(
-        Math.random() * (originals[0].items.results.length - 1)
+        Math.random() * originals[0].items.results.length - 1
       );
 
       let chosen = originals[0].items.results[randomChosen];
@@ -59,15 +59,24 @@ function App() {
 
       <section>
         <footer>
-          Feito com{" "}
+          Feito com
           <span role="img" aria-label="coracao">
             ❤️
-          </span>{" "}
+          </span>
           por Raff <br />
-          Direitos de imagem a NetFlix <br />
+          Direitos de imagem a Netflix <br />
           Dados pegos do site The Movie DB
         </footer>
       </section>
+
+      {movieList.length <= 0 && (
+        <div className="loading">
+          <img
+            src="https://assets.wired.com/photos/w_1920/wp-content/uploads/2016/01/Netflix_LoadTime.gif"
+            alt="carregando"
+          />
+        </div>
+      )}
     </div>
   );
 }
